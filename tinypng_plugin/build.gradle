@@ -1,0 +1,45 @@
+plugins {
+    id "kotlin"
+    id "java-gradle-plugin"
+    id "maven-publish"
+}
+
+dependencies {
+    implementation(gradleApi())
+    implementation(localGroovy())
+    compileOnly("com.android.tools.build:gradle:7.2.1")
+    implementation("com.tinify:tinify:1.8.3")
+}
+
+// 配置gradle插件，自动生成插件入口
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            // apply plugin: 此id
+            id = "com.aidaole.plugin.tinypng"
+            // 这个类路径需要指向插件的入口类
+            implementationClass = "com.aidaole.plugin.imgcompress.TingpngPluginImpl"
+        }
+    }
+}
+
+// maven publish 发布插件使用
+afterEvaluate {
+    publishing {
+        repositories {
+            maven {
+                // 本地目录，项目根目录的 repo 文件夹
+                url = "../repo"
+            }
+        }
+        publications {
+            maven(MavenPublication) {
+                // {groupId:artifactId:version} 为buildScript 中依赖的 classpath 插件地址
+                groupId = 'com.aidaole.plugin'
+                artifactId = 'tinypng'
+                version = '1.0'
+                from components.java
+            }
+        }
+    }
+}
