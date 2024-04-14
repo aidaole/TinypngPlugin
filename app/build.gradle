@@ -2,11 +2,11 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
-apply plugin: "com.aidaole.plugin.tinypng"
-tinypngConfig {
-    apiKey "xxxxxxxxxxxx" // tinypng官网申请
-    imgTypes ".png|.jpg" // 可选
-}
+//apply plugin: "com.aidaole.plugin.tinypng"
+//tinypngConfig {
+//    apiKey "xxxxxxxxxxxx" // tinypng官网申请
+//    imgTypes ".png|.jpg" // 可选
+//}
 
 android {
     namespace 'com.aidaole.plugin.imgcompress'

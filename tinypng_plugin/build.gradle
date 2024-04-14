@@ -26,17 +26,17 @@ gradlePlugin {
 // maven publish 发布插件使用
 afterEvaluate {
     publishing {
-        repositories {
-            maven {
-                // 本地目录，项目根目录的 repo 文件夹
-                url = "../repo"
-            }
-        }
+//        repositories {
+//            maven {
+//                // 本地目录，项目根目录的 repo 文件夹
+//                url = "../repo"
+//            }
+//        }
         publications {
             maven(MavenPublication) {
                 // {groupId:artifactId:version} 为buildScript 中依赖的 classpath 插件地址
                 groupId = 'com.aidaole.plugin'
-                artifactId = 'tinypng'
+                artifactId = 'tinypng_plugin'
                 version = '1.0'
                 from components.java
             }
