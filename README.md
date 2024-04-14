@@ -1,5 +1,50 @@
 # 使用方式
 
+## 1. 使用jitpack中的插件
+
+### 1. 添加依赖
+
+settings.gradle中添加 jitpack仓库
+```groovy
+pluginManagement {
+    repositories {
+        // ...
+        maven { url 'https://jitpack.io' }
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+```
+
+在project的build.gradle中添加插件依赖
+```groovy
+buildscript {
+    dependencies {
+        classpath 'com.github.aidaole:TinypngPlugin:1.0.0'
+    }
+}
+```
+
+### 2. 配置插件
+
+在app的build.gradle中配置插件
+
+```groovy
+apply plugin: "com.aidaole.plugin.tinypng"
+tinypngConfig {
+    apiKey "xxxxxxxxxxxx" // tinypng官网申请
+    imgTypes ".png|.jpg" // 可选
+}
+```
+
+sync项目之后可以看到对应的图片压缩task
+
+![see_comporess_task.png](img/see_comporess_task.png)
+
+
+## 2. 或者自己发布插件到本地
+
 此插件没有上传到公共仓库，如果要使用可以直接本地发布然后引用插件
 
 1. 引入 `tinypng_plugin` module, 然后 sync project

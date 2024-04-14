@@ -1,6 +1,6 @@
 buildscript {
-    repositories {
-//        dependencies { classpath 'com.aidaole.plugin:tinypng:1.0' }
+    dependencies {
+        classpath 'com.github.aidaole:TinypngPlugin:1.0.0'
     }
 }
 
